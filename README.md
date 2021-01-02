@@ -5,6 +5,8 @@ made a Simple Calculator in Android Studio using JAVA
 
 * Size of all text decreases as length of text increases.
 
+* First row of button is scrollable, in it button of "√" is added
+
 * You can also copy the result or formula to clipboard by long pressing it.
 
 * This App also changes night and light mode as per your phone's settings.
@@ -16,4 +18,3 @@ made a Simple Calculator in Android Studio using JAVA
 <img alt="App image" src="Examples/example1.gif" width="30%">
 <img alt="App image" src="Examples/example2.gif" width="30%">
 </div>
-

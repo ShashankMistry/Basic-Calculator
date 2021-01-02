@@ -5,7 +5,7 @@ made a Simple Calculator in Android Studio using JAVA
 
 * Size of all text decreases as length of text increases.
 
-* First row of button is scrollable, in it button of "√" is added
+* First row of button is scrollable, in it button of "√" is added.
 
 * You can also copy the result or formula to clipboard by long pressing it.
 

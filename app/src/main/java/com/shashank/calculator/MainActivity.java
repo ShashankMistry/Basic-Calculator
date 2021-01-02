@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.TypedValue;
-//import android.view.View;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("0");
-                equal = false;
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
+                setDefault();
             }
         });
         btn1.setOnClickListener(v -> {
@@ -74,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("1");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn2.setOnClickListener(v -> {
@@ -86,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("2");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
 
             }
         });
@@ -99,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("3");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn4.setOnClickListener(v -> {
@@ -111,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("4");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn5.setOnClickListener(v -> {
@@ -123,8 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("5");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn6.setOnClickListener(v -> {
@@ -135,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("6");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn7.setOnClickListener(v -> {
@@ -147,8 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("7");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn8.setOnClickListener(v -> {
@@ -159,8 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("8");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         btn9.setOnClickListener(v -> {
@@ -171,8 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 setFalse();
             } else {
                 etCalc.setText("9");
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                equal = false;
+                setDefault();
             }
         });
         //when button remove is long pressed it sets all fields to null and set btnRem text to "←"
@@ -448,13 +437,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void copy() {
-        vibe.vibrate(MillisecondsLong);
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("CalcData", etCalc.getText().toString());
-        clipboard.setPrimaryClip(clip);
-        Toast.makeText(MainActivity.this, "Copied to clipboard", Toast.LENGTH_SHORT).show();
-    }
 
     @SuppressLint("SetTextI18n")
     public void buttonPer(View view) {
@@ -597,6 +579,21 @@ public class MainActivity extends AppCompatActivity {
         tvSize();
         etSize();
         SimpleAnswer();
+    }
+
+    private void setDefault() {
+        equal = false;
+        btnRem.setText("←");
+        btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
+    }
+
+    private void copy() {
+        vibe.vibrate(MillisecondsLong);
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("CalcData", etCalc.getText().toString());
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(MainActivity.this, "Copied to clipboard", Toast.LENGTH_SHORT).show();
     }
 
     /*

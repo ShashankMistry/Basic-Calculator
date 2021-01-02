@@ -5,6 +5,8 @@ made a Simple Calculator in Android Studio using JAVA
 
 * You can also copy the result or formula to clipboard by long pressing it.
 
+* Long pressing on the remove sign removes everything and sets everything to default.
+
 * This App also changes night and light mode as per your phone's settings.
 
 ## Example

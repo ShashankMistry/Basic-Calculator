@@ -231,9 +231,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 etCalc.setText(etCalc.getText() + ".");
             }
+            setDefault();
         }
         dot = true;
-        equal = false;
         //setting equals as false because if you want to continue your calculation after pressing equal button.
         //if equal = true; when you press dot after pressing equal button EditText field resets.
     }
@@ -276,9 +276,8 @@ public class MainActivity extends AppCompatActivity {
                 etCalc.setText("");
                 tvCalc.setText("");
                 tvCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55);
-                etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-                btnRem.setText("←");
+                dot = false;
+                setDefault();
                 setFalse();
             }
         }

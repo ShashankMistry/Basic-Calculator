@@ -9,7 +9,4 @@ made a Simple Calculator in Android Studio using JAVA
 
 ## Example
 
-<div style="display:flex;">
-<img alt="App image" src="Example/example_1.gif" width="30%">
-<img alt="App image" src="Example/example_2.gif" width="30%">
-</div>
+

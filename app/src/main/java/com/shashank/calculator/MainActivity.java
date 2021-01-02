@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.TypedValue;
+//import android.view.View;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -308,34 +309,29 @@ public class MainActivity extends AppCompatActivity {
     public void buttonAdd(View view) {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
-        //if string is ending with any of the sign and use presses this sign button it changes to last button user presses
-        //so app will be convenient to use
-        if (Calc.endsWith("^") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("×")) {
-            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "+");
-            add = true;
-            Equals();
-        }
-        //setting this sign is true because if somehow add if false and string ends with "+" so user can not print it again
-        if (Calc.endsWith("+")) {
-            add = true;
-        }
         //checking if string already contains any of the sign, if yes so checking this sign to true so it can not be usable by user
-        if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×") || !Calc.endsWith("-"))
-                && (!Calc.contains("^") || !Calc.endsWith("-")) && !Calc.equals("-")) {
-            if (!add) {
-                if (etCalc.getText().length() != 0) {
-                    Equals();
-                    etCalc.setText(etCalc.getText() + "+");
-                }
-                //setting equal to false because if anyone wants to continue their calculation after pressing equal button
-                //setting dot = false because if anyone presses any sign after decimal value it stops them to use another sign
-                // i.e: 5.3-3 now you cannot print dot after 3.
-                add = true;
-                dot = false;
-                equal = false;
-                btnRem.setText("←");
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        if ((Calc.contains("÷") && Calc.endsWith("-")) || (Calc.contains("×") && Calc.endsWith("-")) || (Calc.contains("^") && Calc.endsWith("-")) || Calc.equals("-")) {
+            add = true;
+        } else if (Calc.endsWith("^") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("×")) {
+            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "+");
+            Equals();
+            //if string is ending with any of the sign and user presses this sign button it changes to last button user presses
+            //so app will be convenient to use
+        } else if (!add) {
+            if (etCalc.getText().length() == 0) {
+                etCalc.setText("");
+            } else {
+                Equals();
+                etCalc.setText(etCalc.getText() + "+");
             }
+            //setting equal to false because if anyone wants to continue their calculation after pressing equal button
+            //setting dot = false because if anyone presses any sign after decimal value it stops them to use another sign
+            // i.e: 5.3-3 now you cannot print dot after 3.
+            add = true;
+            dot = false;
+            equal = false;
+            btnRem.setText("←");
+            btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         }
     }
 
@@ -343,52 +339,44 @@ public class MainActivity extends AppCompatActivity {
     public void buttonSub(View view) {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
-        if (Calc.endsWith("+")) {
+        if ((Calc.contains("÷") && Calc.endsWith("-")) || (Calc.contains("×") && Calc.endsWith("-")) || (Calc.contains("^") && Calc.endsWith("-"))) {
+            sub = true;
+        } else if (Calc.endsWith("+")) {
             etCalc.setText(Calc.substring(0, Calc.length() - 1) + "-");
-            sub = true;
-        }
-        if (Calc.endsWith("-")) {
-            sub = true;
-        }
-        if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×")
-                || !Calc.endsWith("-")) && (!Calc.contains("^") || !Calc.endsWith("-"))) {
-            if (Calc.length() == 0 || Calc.equals("-")) {
-                etCalc.setText("-");
-            } else if (!sub) {
-                Equals();
-                etCalc.setText(etCalc.getText() + "-");
-                btnRem.setText("←");
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-            }
-            sub = true;
+        } else if (Calc.length() == 0 || Calc.equals("-")) {
+            etCalc.setText("-");
+        } else if (!sub) {
+            Equals();
+            etCalc.setText(etCalc.getText() + "-");
             dot = false;
-            equal = false;
+            btnRem.setText("←");
+            btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         }
+        sub = true;
+        equal = false;
     }
 
     @SuppressLint("SetTextI18n")
     public void buttonMul(View view) {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
-        if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("^")) {
+        if ((Calc.contains("÷") && Calc.endsWith("-")) || (Calc.contains("×") && Calc.endsWith("-")) || (Calc.contains("^") && Calc.endsWith("-")) || Calc.equals("-")) {
+            mul = true;
+        } else if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("^")) {
             etCalc.setText(Calc.substring(0, Calc.length() - 1) + "×");
+        } else if (Calc.endsWith("×")) {
             mul = true;
-        }
-        if (Calc.endsWith("×")) {
-            mul = true;
-        }
-        if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×") || !Calc.endsWith("-")) && (!Calc.contains("^")
-                || !Calc.endsWith("-")) && !Calc.equals("-")) {
-            if (!mul) {
-                if (etCalc.getText().length() != 0) {
-                    Equals();
-                    etCalc.setText(etCalc.getText() + "×");
-                }
-                btnRem.setText("←");
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        } else if (!mul) {
+            if (etCalc.getText().length() == 0) {
+                etCalc.setText("");
+            } else {
+                Equals();
+                etCalc.setText(etCalc.getText() + "×");
             }
+            btnRem.setText("←");
+            btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         }
-        //setting sub = false because - can be allowed after × i.e:(3×-3) is possible
+        //setting sub = false because 3×-1 is possible
         mul = true;
         sub = false;
         dot = false;
@@ -399,24 +387,21 @@ public class MainActivity extends AppCompatActivity {
     public void buttonDiv(View view) {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
-        if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("^") || Calc.endsWith("×")) {
-            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "÷");
+        if ((Calc.contains("÷") && Calc.endsWith("-")) || (Calc.contains("×") && Calc.endsWith("-")) || (Calc.contains("^") && Calc.endsWith("-")) || Calc.equals("-")) {
             div = true;
+        } else if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("^") || Calc.endsWith("×")) {
+            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "÷");
         } else if (Calc.endsWith("÷")) {
             div = true;
-        }
-
-        if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×") || !Calc.endsWith("-")) && (!Calc.contains("^") || !Calc.endsWith("-")) && !Calc.equals("-")) {
-            if (!div) {
-                if (etCalc.getText().length() == 0) {
-                    etCalc.setText("");
-                } else {
-                    Equals();
-                    etCalc.setText(etCalc.getText() + "÷");
-                }
-                btnRem.setText("←");
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        } else if (!div) {
+            if (etCalc.getText().length() == 0) {
+                etCalc.setText("");
+            } else {
+                Equals();
+                etCalc.setText(etCalc.getText() + "÷");
             }
+            btnRem.setText("←");
+            btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         }
         div = true;
         sub = false;
@@ -428,22 +413,22 @@ public class MainActivity extends AppCompatActivity {
     public void buttonPow(View view) {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
-        if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("×")) {
-            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "^");
+        if ((Calc.contains("÷") && Calc.endsWith("-")) || (Calc.contains("×") && Calc.endsWith("-"))
+                || (Calc.contains("^") && Calc.endsWith("-")) || Calc.equals("-")) {
             pow = true;
+        } else if (Calc.endsWith("+") || Calc.endsWith("-") || Calc.endsWith("÷") || Calc.endsWith("×")) {
+            etCalc.setText(Calc.substring(0, Calc.length() - 1) + "^");
         } else if (Calc.endsWith("^")) {
             pow = true;
-        }
-        if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×") || !Calc.endsWith("-"))
-                && (!Calc.contains("^") || !Calc.endsWith("-")) && !Calc.equals("-")) {
-            if (!pow) {
-                if (etCalc.getText().length() != 0) {
-                    Equals();
-                    etCalc.setText(etCalc.getText() + "^");
-                }
-                btnRem.setText("←");
-                btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+        } else if (!pow) {
+            if (etCalc.getText().length() == 0) {
+                etCalc.setText("");
+            } else {
+                Equals();
+                etCalc.setText(etCalc.getText() + "^");
             }
+            btnRem.setText("←");
+            btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         }
         pow = true;
         sub = false;
@@ -476,7 +461,10 @@ public class MainActivity extends AppCompatActivity {
         vibe.vibrate(Milliseconds);
         String Calc = etCalc.getText().toString();
         try {
-            if (Calc.split("\\+").length == 2 || Calc.split("×").length == 2
+            //if string ends with minus, setting sub value to false so it does not goes to next else if statement and Toast appears.
+            if (Calc.endsWith("-")) {
+                per = false;
+            } else if (Calc.split("\\+").length == 2 || Calc.split("×").length == 2
                     || Calc.split("÷").length == 2 || Calc.split("-").length >= 2
                     || Calc.split("\\^").length == 2) {
                 etCalc.setText(etCalc.getText() + "%");
@@ -666,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //it changes size of text in TextView and EditText fields as length increases.
+    //it changes size of text as length increases.
     public void etSize() {
         if (etCalc.getText().length() > 18) {
             etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);

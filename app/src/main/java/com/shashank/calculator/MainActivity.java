@@ -500,6 +500,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {
+            String perSign = etCalc.getText().toString();
+            if(perSign.endsWith("%")){
+                etCalc.setText(perSign.substring(0,perSign.length()-1));
+            }
             Toast.makeText(MainActivity.this, "Bad expression", Toast.LENGTH_SHORT).show();
             setFalse();
         }

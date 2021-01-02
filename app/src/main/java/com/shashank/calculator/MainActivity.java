@@ -12,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.TypedValue;
-//import android.view.View;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -316,6 +315,10 @@ public class MainActivity extends AppCompatActivity {
             add = true;
             Equals();
         }
+        //setting this sign is true because if somehow add if false and string ends with "+" so user can not print it again
+        if (Calc.endsWith("+")) {
+            add = true;
+        }
         //checking if string already contains any of the sign, if yes so checking this sign to true so it can not be usable by user
         if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×") || !Calc.endsWith("-"))
                 && (!Calc.contains("^") || !Calc.endsWith("-")) && !Calc.equals("-")) {
@@ -342,6 +345,9 @@ public class MainActivity extends AppCompatActivity {
         String Calc = etCalc.getText().toString();
         if (Calc.endsWith("+")) {
             etCalc.setText(Calc.substring(0, Calc.length() - 1) + "-");
+            sub = true;
+        }
+        if (Calc.endsWith("-")) {
             sub = true;
         }
         if ((!Calc.contains("÷") || !Calc.endsWith("-")) && (!Calc.contains("×")
@@ -539,29 +545,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
-    private void SimpleAnswer() {
-        String Ans = etCalc.getText().toString();
-        String[] Answer = Ans.split("\\.");
-        if (Answer.length > 1) {
-            if (Answer[1].equals("0")) {
-                etCalc.setText(Answer[0]);
-            } else {
-                dot = true;
-            }
-            if (Answer[1].length() > 10) {
-                if (Answer[1].contains("E")) {
-                    etCalc.setText(Answer[0] + "." + Answer[1]);
-                    etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-                } else {
-                    Answer[1] = Answer[1].substring(0, 10);
-                    etCalc.setText(Answer[0] + "." + Answer[1]);
-                    etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-                }
-            }
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
     public void Equals() {
         String calc = etCalc.getText().toString();
         if (calc.split("\\+").length == 2) {
@@ -628,6 +611,33 @@ public class MainActivity extends AppCompatActivity {
         SimpleAnswer();
     }
 
+    /*
+    here if ans is in decimal and decimal value is 0 so it prints it without 0 i.e: 3.0 prints as 3
+    and if decimal value is other than 0 so it sets dot to true so no one can add dot at the end of the answer
+     */
+    @SuppressLint("SetTextI18n")
+    private void SimpleAnswer() {
+        String Ans = etCalc.getText().toString();
+        String[] Answer = Ans.split("\\.");
+        if (Answer.length > 1) {
+            if (Answer[1].equals("0")) {
+                etCalc.setText(Answer[0]);
+            } else {
+                dot = true;
+            }
+            if (Answer[1].length() > 10) {
+                if (Answer[1].contains("E")) {
+                    etCalc.setText(Answer[0] + "." + Answer[1]);
+                    etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                } else {
+                    Answer[1] = Answer[1].substring(0, 10);
+                    etCalc.setText(Answer[0] + "." + Answer[1]);
+                    etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+                }
+            }
+        }
+    }
+
     @SuppressLint("SetTextI18n")
     public void FactSolve() {
         long r = 1;
@@ -656,6 +666,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //it changes size of text in TextView and EditText fields as length increases.
     public void etSize() {
         if (etCalc.getText().length() > 18) {
             etCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);

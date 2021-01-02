@@ -3,11 +3,11 @@ made a Simple Calculator in Android Studio using JAVA
 
 * A Simple calculator App with the basic functions.
 
+* Size of all text decreases as length of text increases.
+
 * This App also changes night and light mode as per your phone's settings.
 
 * You can also copy the result or formula to clipboard by long pressing it.
-
-* Size of all text decreases as length of text increases.
 
 * Long pressing on the remove sign removes everything and sets everything to default.
 

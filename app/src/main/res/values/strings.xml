@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="btn_pow">^</string>
+    <string name="btn_fact">!</string>
+    <string name="btn_per">%</string>
+    <string name="btn_sqrt">√</string>
+    <string name="btn_rem">←</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    <string name="btn_div">÷</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_mul">×</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_sub">‒</string>
+    <string name="btn_0">0</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_equal">=</string>
+    <string name="btn_add">+</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="history">History</string>
+    <string name="clear_history">Clear History</string>
+</resources>

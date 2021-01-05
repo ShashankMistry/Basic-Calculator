@@ -39,7 +39,10 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_history, container, false);
         btnClear = rootView.findViewById(R.id.btnClear);
-        btnClear.setOnClickListener(v -> listView.setAdapter(null));
+         btnClear.setOnClickListener(v -> {
+            historyLists.clear();
+            listView.setAdapter(null);
+        });
         historyLists = new ArrayList<>();
         return rootView;
     }

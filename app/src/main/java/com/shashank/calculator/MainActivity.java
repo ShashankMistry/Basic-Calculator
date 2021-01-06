@@ -8,13 +8,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.Button;
-
 
 public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     pageAdapter pageAdapter;
-    Button btnEqual;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint({"SetTextI18n", "UseCompatLoadingForDrawables"})
@@ -29,6 +26,6 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
         pageAdapter = new pageAdapter(getSupportFragmentManager(), 2);
         viewPager.setAdapter(pageAdapter);
-        getSupportFragmentManager().beginTransaction().add(R.id.viewPager, new CalculatorFragment()).add(R.id.viewPager,new HistoryFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.viewPager, new CalculatorFragment()).add(R.id.viewPager, new HistoryFragment()).commit();
     }
 }

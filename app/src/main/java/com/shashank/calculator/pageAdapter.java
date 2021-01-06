@@ -6,17 +6,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class pageAdapter extends FragmentStatePagerAdapter {
-    private int numOfTabs;
-    private HistoryList historyList;
-    String History;
+    private final int numOfTabs;
+
 
     public pageAdapter(@NonNull FragmentManager fm, int numOfTabs) {
         super(fm, numOfTabs);
         this.numOfTabs = numOfTabs;
     }
-
-
-
+    
+    @NonNull
     @Override
     public Fragment getItem(int i) {
         switch (i) {
@@ -32,6 +30,4 @@ public class pageAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return numOfTabs;
     }
-
 }
-

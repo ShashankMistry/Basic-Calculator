@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Vibrator;
@@ -504,7 +503,7 @@ public class CalculatorFragment extends Fragment {
                     double Ans = Double.parseDouble(Calc) / 100;
                     etCalc.setText("" + Ans);
                     tvCalc.setText(Calc + "%");
-                    viewModel.setText(Calc+"%"+"="+Ans);
+                    viewModel.setText(Calc + "%" + "=" + Ans);
                     btnRem.setText("C");
                     btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
                     etSize();
@@ -533,7 +532,7 @@ public class CalculatorFragment extends Fragment {
                 String square = etCalc.getText().toString();
                 double Ans = Math.sqrt(Double.parseDouble(square));
                 etCalc.setText(String.valueOf(Ans));
-                viewModel.setText("√"+Calc+"="+Ans);
+                viewModel.setText("√" + Calc + "=" + Ans);
                 sqrt = true;
                 equal = true;
                 btnRem.setText("C");
@@ -545,7 +544,7 @@ public class CalculatorFragment extends Fragment {
                     double Ans = Math.sqrt(Double.parseDouble(Calc));
                     etCalc.setText(String.valueOf(Ans));
                     tvCalc.setText("√" + Calc);
-                    viewModel.setText("√"+Calc+"="+Ans);
+                    viewModel.setText("√" + Calc + "=" + Ans);
                     btnRem.setText("C");
                     btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
                     etSize();
@@ -573,6 +572,7 @@ public class CalculatorFragment extends Fragment {
             String Ans = String.valueOf(Double.parseDouble(calculation[0]) + Double.parseDouble(calculation[1]));
             etCalc.setText(Ans);
             tvCalc.setText(calc);
+            // setting data in to viewModel
             viewModel.setText(calc + "=" + Ans);
 
         } else if (calc.split("×").length == 2) {
@@ -697,7 +697,7 @@ public class CalculatorFragment extends Fragment {
                 }
                 etCalc.setText(r + "");
                 tvCalc.setText(calc + "!");
-                viewModel.setText(calc+"!"+"="+r);
+                viewModel.setText(calc + "!" + "=" + r);
             } else {
                 Toast.makeText(getContext(), "Too Big!!", Toast.LENGTH_SHORT).show();
             }
@@ -756,13 +756,5 @@ public class CalculatorFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(SharedViewModel.class);
-        viewModel.getText().observe(getViewLifecycleOwner(), new Observer<CharSequence>() {
-            @Override
-            public void onChanged(@Nullable CharSequence charSequence) {
-
-            }
-        });
-
-
     }
 }

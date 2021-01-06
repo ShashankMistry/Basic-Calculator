@@ -27,19 +27,13 @@ public class HistoryFragment extends Fragment {
     ListView listView;
     Button btnClear;
     View rootView;
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_history, container, false);
         btnClear = rootView.findViewById(R.id.btnClear);
-         btnClear.setOnClickListener(v -> {
+        btnClear.setOnClickListener(v -> {
             historyLists.clear();
             listView.setAdapter(null);
         });
@@ -51,14 +45,15 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        // getting data from SharedViewModel and setting it to ListView
         viewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(SharedViewModel.class);
         viewModel.getText().observe(getViewLifecycleOwner(), charSequence -> {
             History = String.valueOf(charSequence);
             String[] HistoryArray = History.split("=");
             String[] RemoveDot = HistoryArray[1].split("\\.");
-            if(RemoveDot.length>1){
-                if(RemoveDot[1].equals("0")){
-                    HistoryArray[1]=RemoveDot[0];
+            if (RemoveDot.length > 1) {
+                if (RemoveDot[1].equals("0")) {
+                    HistoryArray[1] = RemoveDot[0];
                 }
             }
             if (History.split("=").length == 2) {
@@ -68,7 +63,6 @@ public class HistoryFragment extends Fragment {
                 listView = rootView.findViewById(R.id.history);
                 listView.setAdapter(adapter);
             }
-
         });
     }
 }

@@ -1,8 +1,8 @@
 package com.shashank.calculator;
 
 public class HistoryList {
-    private String mCalculation;
-    private String mAnswer;
+    private final String mCalculation;
+    private final String mAnswer;
     public HistoryList(String Calculation, String Answer){
         mCalculation = Calculation;
         mAnswer = Answer;

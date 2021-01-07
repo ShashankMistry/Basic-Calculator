@@ -41,7 +41,6 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getContext(), "started", Toast.LENGTH_SHORT).show();
         // getting data from SharedViewModel and setting it to ListView
         viewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(SharedViewModel.class);
         viewModel.getText().observe(getViewLifecycleOwner(), charSequence -> {

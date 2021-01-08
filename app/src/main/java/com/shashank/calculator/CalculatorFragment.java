@@ -67,12 +67,7 @@ public class CalculatorFragment extends Fragment {
         btnEqual = rootView.findViewById(R.id.btnEqual);
         etCalc = rootView.findViewById(R.id.etCalc);
         tvCalc = rootView.findViewById(R.id.tvCalc);
-        //SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        // mEditor = mPreferences.edit();
         vibe = (Vibrator) Objects.requireNonNull(getActivity()).getSystemService(Context.VIBRATOR_SERVICE);
-        // historyLists = new ArrayList<>();
-        //String AnswerEt = mPreferences.getString("key", "");
-        // etCalc.setText(AnswerEt);
         btn0.setOnClickListener(v -> {
             vibe.vibrate(Milliseconds);
             etSize();
@@ -472,6 +467,7 @@ public class CalculatorFragment extends Fragment {
             dot = false;
             equal = true;
             Equals();
+            tvSize();
             btnRem.setText("C");
             btnRem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
 
@@ -737,6 +733,8 @@ public class CalculatorFragment extends Fragment {
             tvCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
         } else if (tvCalc.getText().length() > 8) {
             tvCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 45);
+        } else if (tvCalc.getText().length() > 1) {
+            tvCalc.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55);
         }
     }
 
@@ -750,7 +748,7 @@ public class CalculatorFragment extends Fragment {
         fact = false;
         sqrt = false;
     }
-
+// Setting data into SharedViewModel to second fragment can update data
     @SuppressWarnings("deprecation")
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

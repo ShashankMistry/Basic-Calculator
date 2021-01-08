@@ -5,12 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -29,6 +30,7 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_history, container, false);
         btnClear = rootView.findViewById(R.id.btnClear);
+        listView = rootView.findViewById(R.id.history);
         btnClear.setOnClickListener(v -> {
             historyLists.clear();
             listView.setAdapter(null);
@@ -55,7 +57,6 @@ public class HistoryFragment extends Fragment {
             if (History.split("=").length == 2) {
                 adapter = new HistoryAdapter(Objects.requireNonNull(getActivity()), historyLists);
                 historyLists.add(0,new HistoryList(HistoryArray[0], HistoryArray[1]));
-                listView = rootView.findViewById(R.id.history);
                 listView.setAdapter(adapter);
             }
         });

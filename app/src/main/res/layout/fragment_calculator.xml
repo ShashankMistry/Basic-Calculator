@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:autofillHints=""
             android:background="@null"
             android:cursorVisible="false"
             android:ems="10"
@@ -41,8 +42,7 @@
             android:inputType="textPersonName"
             android:paddingStart="25dp"
             android:paddingEnd="23dp"
-            android:textSize="45sp"
-            android:autofillHints="" />
+            android:textSize="45sp" />
 
     </LinearLayout>
 
@@ -56,25 +56,24 @@
         <HorizontalScrollView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.75"
             android:scrollbars="none">
 
             <LinearLayout
                 android:id="@+id/ll"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/btnPow"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginRight="2dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="1"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/btn_pow"
                     android:textSize="50sp" />
@@ -87,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="1"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/btn_fact"
                     android:textSize="50sp"
@@ -99,7 +98,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="1"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/btn_per"
                     android:textSize="50sp" />
@@ -113,7 +112,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginRight="2dp"
-                    android:layout_weight="0.25"
+                    android:layout_weight="1"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/btn_sqrt"
                     android:textSize="50sp" />
@@ -123,9 +122,9 @@
         <Button
             android:id="@+id/btnRem"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:layout_weight="0.25"
             android:fontFamily="sans-serif-thin"
             android:text="@string/btn_rem"
             android:textSize="30sp"

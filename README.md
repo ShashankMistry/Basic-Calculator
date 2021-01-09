@@ -11,9 +11,9 @@ made a Simple Calculator in Android Studio using JAVA
 
 * This App also changes night and light mode as per your phone's settings.
 
-* You can swipe left to get the History tab to go through all calculations you made.
-
 * Long pressing on the remove sign removes everything and sets everything to default.
+
+* You can swipe left to get the History tab to go through all calculations you made & you can long press on any calculation in history to copy answer.
 
 ## Example
 <div style="display:flex;">

@@ -17,7 +17,7 @@ made a Simple Calculator in Android Studio using JAVA
 
 ## Example
 <div style="display:flex;">
-<img alt="App image" src="Examples/example1.gif" width="30%">
+<img alt="App image" src="Examples/example1.gif" width="20%">
 <img alt="App image" src="Examples/example2.gif" width="30%">
 <img alt="App image" src="Examples/example3.gif" width="30%">
 </div>
